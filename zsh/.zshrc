@@ -59,7 +59,7 @@ fi
 # Git
 export GPG_TTY=$(tty)
 gpgconf --launch gpg-agent
-alias gm="git commit -m"
+alias gm="git commit -S -s -m"
 
 # kube
 if command -v kubectl &> /dev/null
