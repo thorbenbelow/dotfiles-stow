@@ -8,11 +8,18 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
 	git
+	docker
+	docker-compose
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
+autoload -U compinit && compinit
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH/bin
 
 # Env
 export LANG=en_US.UTF-8
@@ -26,6 +33,7 @@ fi
 eval "$(zoxide init zsh)"
 
 # Config
+alias dotconfig="nvim ~/.dotfiles/"
 alias zshconfig="nvim ~/.zshrc"
 alias nvimconfig="nvim ~/.config/nvim/init.lua"
 alias ohmyzsh="code ~/.oh-my-zsh"
@@ -85,3 +93,10 @@ if [ -f '/Users/thorben/dev/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/Use
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/thorben/dev/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/thorben/dev/tools/google-cloud-sdk/completion.zsh.inc'; fi
+
+. <(flux completion zsh)
+. <(kubectl completion zsh)
+. <(docker completion zsh)
+. <(minikube completion zsh)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
