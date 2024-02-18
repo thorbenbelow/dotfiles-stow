@@ -1,19 +1,30 @@
-[user]
-	name = Thorben Below
-	email = 56894536+thorbenbelow@users.noreply.github.com
-	signingkey = 56894536+thorbenbelow@users.noreply.github.com
+[include]
+	path = ~/.gituser
 [commit]
 	gpgsign = true
-[tag]
-	gpgSign = true
+	verbose = true
 [init]
-	defaultBranch = main
+	defaultbranch = main
 [core]
 	editor = nvim
 	pager = delta
+	excludesfile = ~/.gitignore
 [interactive]
-	diffFilter = delta --color-only
+	difffilter = delta --color-only
+[push]
+	autosetupremote = true
 [pull]
 	rebase = true
 [rebase]
-	autoStash = true
+	autosquash = true
+	autostash = true
+[merge]
+	conflictstyle = zdiff3
+[diff]
+	algorithm = histogram
+[rerere]
+	enabled = true
+[help]
+	autocorrect = prompt
+[branch]
+	sort = -committerdate
