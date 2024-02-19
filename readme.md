@@ -24,3 +24,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/z
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 chsh -s $(which zsh)
 ```
+
+## Auto Loaded Configuration
+- Git: `~/.gituser`
+- zsh: `~/.zshrc.local`
