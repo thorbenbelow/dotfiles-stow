@@ -86,6 +86,11 @@ then
   . <(kubectl completion zsh)
 fi
 
+if command -v helm &> /dev/null
+then
+  . <(helm completion zsh)
+fi
+
 # Docker
 if command -v docker &> /dev/null
 then

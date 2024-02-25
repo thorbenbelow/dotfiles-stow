@@ -26,5 +26,5 @@ chsh -s $(which zsh)
 ```
 
 ## Auto Loaded Configuration
-- Git: `~/.gituser`
+- Git: `~/.gitconfig.local`
 - zsh: `~/.zshrc.local`
