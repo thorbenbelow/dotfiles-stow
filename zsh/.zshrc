@@ -78,6 +78,11 @@ then
   alias gp="git pull"
 fi
 
+if command -v npm &> /dev/null
+then
+  . <(npm completion)
+fi
+
 # kube
 if command -v kubectl &> /dev/null
 then
@@ -104,6 +109,11 @@ fi
 if command -v flux &> /dev/null
 then
   . <(flux completion zsh)
+fi
+
+if command -v k3d &> /dev/null
+then
+  . <(k3d completion zsh)
 fi
 
 if command -v minikube &> /dev/null
