@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 export ZSH="$HOME/.oh-my-zsh"
 
 
@@ -54,6 +55,13 @@ then
   alias l="exa --long --all"
   alias la="exa --long --all"
   alias ll="clear && la"
+fi
+
+if command -v fzf &> /dev/null 
+then
+  function de() {
+    cd ~/dev/$(ls ~/dev | fzf)
+  }
 fi
 
 # Terraform
