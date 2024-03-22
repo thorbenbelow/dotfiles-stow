@@ -57,7 +57,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
@@ -141,6 +141,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	"tpope/vim-fugitive",
 	{
 		"goolord/alpha-nvim",
 		config = function()
@@ -168,6 +169,10 @@ require("lazy").setup({
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {
+			current_line_blame = true,
+			current_line_blame_opts = {
+				delay = 0,
+			},
 			signs = {
 				add = { text = "+" },
 				change = { text = "~" },
