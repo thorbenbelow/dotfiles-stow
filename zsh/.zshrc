@@ -132,7 +132,4 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load Custom Local Config
-if [ -f ~/.zshrc.local ]
-then 
-  . ~/.zshrc.local
-fi
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
