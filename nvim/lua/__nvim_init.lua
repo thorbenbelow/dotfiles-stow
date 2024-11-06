@@ -242,6 +242,7 @@ require("lazy").setup({
 				end,
 			},
 			{ "nvim-telescope/telescope-ui-select.nvim" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
 
 			-- Useful for getting pretty icons, but requires special font.
 			--  If you already have a Nerd Font, or terminal set up with fallback fonts
@@ -284,15 +285,27 @@ require("lazy").setup({
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
 					},
+					file_browser = {
+						theme = "ivy",
+						hijack_netrw = true,
+					},
 				},
 			})
 
 			-- Enable telescope extensions, if they are installed
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
+			pcall(require("telescope").load_extension, "file_browser")
 
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
+
+			vim.keymap.set(
+				"n",
+				"<leader>fb",
+				require("telescope").extensions.file_browser.file_browser,
+				{ desc = "[F]ile [B]rowser" }
+			)
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
@@ -554,6 +567,7 @@ require("lazy").setup({
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
+				javascript = { { "prettier" } },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
