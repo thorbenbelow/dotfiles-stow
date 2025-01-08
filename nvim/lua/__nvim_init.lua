@@ -140,6 +140,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+	"github/copilot.vim",
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	"tpope/vim-fugitive",
 	{
@@ -776,6 +777,45 @@ require("lazy").setup({
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
 	{ import = "custom.plugins" },
 })
+
+-- NOTE: The following section is wip
+
+-- TODO: hide color preview if the cursor is on the # char
+-- #ffffff #000345 #123456 #000fff
+--
+local ns_id = vim.api.nvim_create_namespace("color_preview")
+local ColorPreview = {}
+function ColorPreview.add_color_preview(bufnr)
+	bufnr = bufnr or vim.api.nvim_get_current_buf()
+	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+
+	vim.api.nvim_buf_clear_namespace(bufnr, ns_id, 0, -1)
+
+	for lnum, line in ipairs(lines) do
+		for hex in line:gmatch("#%x%x%x%x%x%x") do
+			local col_start = line:find(hex) - 1
+
+			local hl_group = "ColorPreview_" .. hex:sub(2)
+			vim.api.nvim_buf_set_extmark(bufnr, ns_id, lnum - 1, col_start, {
+				virt_text = { { "■", hl_group } },
+				virt_text_pos = "overlay",
+				hl_mode = "combine",
+			})
+
+			vim.api.nvim_set_hl(0, hl_group, { fg = hex })
+		end
+	end
+end
+
+function ColorPreview.setup()
+	vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
+		callback = function()
+			ColorPreview.add_color_preview()
+		end,
+	})
+end
+
+ColorPreview.setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
