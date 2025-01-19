@@ -49,11 +49,11 @@ then
   alias cat="bat -n"
 fi
 
-if command -v exa &> /dev/null
+if command -v eza &> /dev/null
 then
-  alias ls="exa"
-  alias l="exa --long --all"
-  alias la="exa --long --all"
+  alias ls="eza"
+  alias l="eza --long --all"
+  alias la="eza --long --all"
   alias ll="clear && la"
 fi
 
@@ -133,3 +133,9 @@ fi
 
 # Load Custom Local Config
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+
+#appium
+export ANDROID_HOME=/Users/thorben/Library/Android/sdk
+export JAVA_HOME=/usr
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
