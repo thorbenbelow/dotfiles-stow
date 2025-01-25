@@ -21,6 +21,9 @@ then
 
 	stow -R -t $HOME zsh
 
+	mkdir -p $HOME/.config/ghostty	
+	stow -R -t $HOME/.config/ghostty ghostty
+
 fi
 
 if command -v zsh &> /dev/null

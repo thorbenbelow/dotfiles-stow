@@ -1,0 +1,13 @@
+macos-titlebar-style = tabs
+macos-option-as-alt = true 
+
+theme = 3024 Night
+
+keybind = cmd+shift+left=previous_tab
+keybind = cmd+shift+h=previous_tab
+
+keybind = cmd+shift+right=next_tab
+keybind = cmd+shift+l=next_tab
+
+
+keybind = global:cmd+j=toggle_quick_terminal
