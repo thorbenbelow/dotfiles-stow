@@ -8,7 +8,7 @@
 - vim
 
 ## Quickstart
-```Bash
+```bash
 curl -sfL https://raw.githubusercontent.com/thorbenbelow/dotfiles-stow/main/bootstrap.sh | sh -s -
 ```
 
