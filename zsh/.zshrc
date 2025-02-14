@@ -74,6 +74,9 @@ then
   alias tpp="terraform plan -out planned"
   alias ta="terraform apply"
   alias tap="terraform apply planned"
+
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C /opt/homebrew/bin/terraform terraform
 fi
 
 # Git
