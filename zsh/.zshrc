@@ -41,7 +41,7 @@ fi
 alias dotconfig="nvim ~/.dotfiles/"
 alias zshconfig="nvim ~/.zshrc"
 alias nvimconfig="nvim ~/.config/nvim"
-alias ohmyzsh="code ~/.oh-my-zsh"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 
 # Files and directories
 if command -v bat &> /dev/null
@@ -60,7 +60,7 @@ fi
 if command -v fzf &> /dev/null 
 then
   function de() {
-    cd ~/dev/$(ls ~/dev | fzf)
+    cd ~/dev/$(ls ~/dev | fzf) && nvim
   }
 fi
 
